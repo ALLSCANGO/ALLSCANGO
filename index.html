@@ -228,7 +228,7 @@ function AllScan() {
                 //altrimenti, messaggio di errore
                 else { if(APIresponse.message == "Token balance over; you have used up all your requests for today" && NumToken < arrayToken.length - 1) {NumToken++; cid--;}
 
-                    alert("Errore: " + APIresponse.message)
+                    alert("Errore: " + APIresponse.message + "Attenzione!Se stai usando un gruppo di token potrebbe anche non essere vero!")
     alert("Not found: " + cid)
                 }
             });
