@@ -226,7 +226,7 @@ function AllScan() {
                          marker.bindTooltip(enodeb + ":" + secid + " " + band.fontcolor(colorebande)  , {permanent: true, direction: 'bottom'}).openTooltip();
                 }
                 //altrimenti, messaggio di errore
-                else { if(APIresponse.message == "Token balance over; you have used up all your requests for today" && NumToken < arrayToken.length - 1) {NumToken++}
+                else { if(APIresponse.message == "Token balance over; you have used up all your requests for today" && NumToken < arrayToken.length - 1) {NumToken++; cid--;}
 
                     alert("Errore: " + APIresponse.message)
     alert("Not found: " + cid)
