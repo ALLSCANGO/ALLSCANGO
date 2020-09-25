@@ -170,6 +170,12 @@ function AllScan() {
    iconSize:     [26, 42], // size of the icon
    iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
+}); }  else if  (mnc == 10  && (sec == 91 || sec == 92 || sec == 93 || sec == 94)) {
+                     band = "B1";  colorebande = "orange"; iconemarker = L.icon({
+    iconUrl: 'b1.png',
+   iconSize:     [26, 42], // size of the icon
+   iconAnchor:   [13, 41], // point of the icon which will correspond to marker's location
+   popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 }); }
                     else if (mnc == 99 && (sec == 1 || sec == 2 || sec == 3 )) {
                          band = "B3";
