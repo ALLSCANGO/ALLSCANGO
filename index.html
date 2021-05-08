@@ -235,7 +235,7 @@ function AllScan() {
                  var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: iconemarker}).addTo(map);
                         marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb + "<br /><b>SECTOR:</b> " + secid + "<br /><b>BAND:</b> " + band.fontcolor(colorebande) + "<br />").openPopup();
                          marker.bindTooltip(enodeb + ":" + secid + " " + band.fontcolor(colorebande)  , {permanent: true, direction: 'bottom'}).openTooltip();
-                } else if(APIresponse.status == "ok" &&  verificafake != "Si" && (verificafake == "No" || verificafake == "null") || coordinatedestra == "" || coordinatesinistra == "" || latsinistrabasso == "" || latdestraalto == "" || lonsinistrabasso == "" || londestraalto == "" || coordinatedestra == "") {
+                } else if(APIresponse.status == "ok" &&  verificafake != "Si" && (verificafake == "No" || verificafake == "null") && ( coordinatedestra == "" || coordinatesinistra == "" || latsinistrabasso == "" || latdestraalto == "" || lonsinistrabasso == "" || londestraalto == "" || coordinatedestra == "")) {
                     var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: iconemarker}).addTo(map);
                         marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb + "<br /><b>SECTOR:</b> " + secid + "<br /><b>BAND:</b> " + band.fontcolor(colorebande) + "<br />").openPopup();
                          marker.bindTooltip(enodeb + ":" + secid + " " + band.fontcolor(colorebande)  , {permanent: true, direction: 'bottom'}).openTooltip();
