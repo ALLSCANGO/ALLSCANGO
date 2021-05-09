@@ -1,10 +1,151 @@
 <html>
     <head>
-        <title>AllScan Go</title>
+        <meta charset="UTF-8">
+        <title>AllScan GO</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+            body {font-family: 'PT Sans', sans-serif !important; max-width: 1100px !important; align-content: center;   margin: auto !important; }
+            .form-control {max-width: 130px; margin: 5px; margin-bottom: 10px !important;}
+            @media (min-width: 900px) {
+                .logotext {margin-right: 30px !important; font-size: 20px; margin-top: -2px !important;}
+                .form-row {margin-left: -10px !important; margin-right: -10px !important;}
+                li.nav-item{margin-top: -2px;}
+                #pulsantefreccia {display: none;}
+                #map {width: 100%; height: 85%; border-radius: 10px;}
+                #testotitolo {padding-left: 8px; padding-top: 15px;}
+
+            }
+            #mcc {margin-left: 0px !important;}
+            @media (max-width: 900px) {
+                body {padding-right: 0px !important; padding-left: 0px !important; padding-bottom: 0px !important;}
+                .logotext {text-align: center; font-size: 20px; padding-left: 5px;}
+                .navbar-brand {padding-left: 9px !important;}
+                #titolo {box-shadow: 0 3px 10px -5px gray; margin-left: 0px; margin-right: 0px;}
+                 #map {width: 100%; height: 43%; margin-bottom: 0px;}
+              #testotitolo {padding-left: 30px; padding-right: 30px; padding-bottom: 15px; padding-top: 15px;}
+                .form-row {margin-top: 30px;}
+            }
+            .navbar-brand {margin-top: -1px}
+            .freccia:focus {outline: none;}
+
+            .pure-material-button-contained {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 4px;
+    padding: 0 16px;
+    min-width: 64px;
+    height: 38px;
+    vertical-align: middle;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    color: rgb(var(--pure-material-onprimary-rgb, 51,51,51));
+    background-color: rgb(var(--pure-material-primary-rgb, 255, 183, 77));
+
+    font-family: font-family: 'PT Sans', sans-serif !important;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 38px;
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+}
+
+.pure-material-button-contained::-moz-focus-inner {
+    border: none;
+}
+
+/* Overlay */
+.pure-material-button-contained::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
+    opacity: 0;
+    transition: opacity 0.2s;
+        outline: none !important;
+}
+
+/* Ripple */
+.pure-material-button-contained::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    padding: 50%;
+    width: 32px; /* Safari */
+    height: 32px; /* Safari */
+    background-color: rgb(var(--pure-material-onprimary-rgb, 255, 255, 255));
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+    transition: opacity 1s, transform 0.5s;
+        outline: none !important;
+}
+
+/* Hover, Focus */
+.pure-material-button-contained:hover,
+.pure-material-button-contained:focus {
+        outline: none !important;
+}
+
+.pure-material-button-contained:hover::before {
+        outline: none !important;
+    opacity: 0.08;
+}
+
+.pure-material-button-contained:focus::before {
+    opacity: 0.24;
+        outline: none !important;
+}
+
+.pure-material-button-contained:hover:focus::before {
+    opacity: 0.3;
+        outline: none !important;
+}
+
+/* Active */
+.pure-material-button-contained:active {
+outline: none !important;
+}
+
+.pure-material-button-contained:active::after {
+    opacity: 0.32;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0s;
+        outline: none !important;
+}
+
+/* Disabled */
+.pure-material-button-contained:disabled {
+        outline: none !important;
+    color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.38);
+    background-color: rgba(var(--pure-material-onsurface-rgb, 0, 0, 0), 0.12);
+    box-shadow: none;
+    cursor: initial;
+}
+
+.pure-material-button-contained:disabled::before {
+    opacity: 0;
+    outline: none !important;
+}
+
+.pure-material-button-contained:disabled::after {
+    outline: none !important;
+    opacity: 0;
+}
+</style>
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <font color="blue"><p>BENVENUTO SU ALLSCAN GO,LA VERSIONE LEGGERA DI ALLSCAN</p></font>
-
+            <div id="titolo" style="z-index: 10">
+      <font color="#333"><p id="testotitolo">Benvenuto su AllScan GO, la versione più leggera di AllScan</p></font>
+            </div>
+<div style="padding-left: 15px; padding-right: 15px;">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
@@ -31,11 +172,11 @@
  <!-- Global site tag (gtag.js) - Google Analytics -->
     </script>
     <style>
-        #map { height: 100%; width: 100%; }
-        body { margin:15px; padding:15px; }
+        body { margin:15px;}
     
 
 </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script>
 var defaultmarkericon = L.icon({
     iconUrl: 'default.png',
@@ -231,7 +372,7 @@ function AllScan() {
    popupAnchor:  [-1, -39] // point from which the popup should open relative to the iconAnchor
 });}
 		    
-                 if(APIresponse.status == "ok" &&  verificafake == "Si"   && ((APIresponse.lat >= latsinistrabasso && APIresponse.lat <= latdestraalto) && (APIresponse.lon >= lonsinistrabasso && APIresponse.lon <= londestraalto )  )) {
+                if(APIresponse.status == "ok" &&  verificafake == "Si"   && ((APIresponse.lat >= latsinistrabasso && APIresponse.lat <= latdestraalto) && (APIresponse.lon >= lonsinistrabasso && APIresponse.lon <= londestraalto )  )) {
                  var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: iconemarker}).addTo(map);
                         marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb + "<br /><b>SECTOR:</b> " + secid + "<br /><b>BAND:</b> " + band.fontcolor(colorebande) + "<br />").openPopup();
                          marker.bindTooltip(enodeb + ":" + secid + " " + band.fontcolor(colorebande)  , {permanent: true, direction: 'bottom'}).openTooltip();
@@ -239,7 +380,7 @@ function AllScan() {
                     var marker = L.marker([ APIresponse.lat, APIresponse.lon], {icon: iconemarker}).addTo(map);
                         marker.bindPopup("<b>LAT:</b> " + APIresponse.lat + "<br /><b>LON:</b> " + APIresponse.lon + "<br /><b>CID:</b> " + cid + "<br /><b>ENODEB:</b> " + enodeb + "<br /><b>SECTOR:</b> " + secid + "<br /><b>BAND:</b> " + band.fontcolor(colorebande) + "<br />").openPopup();
                          marker.bindTooltip(enodeb + ":" + secid + " " + band.fontcolor(colorebande)  , {permanent: true, direction: 'bottom'}).openTooltip();
-                } 
+                }  
                 //altrimenti, messaggio di errore
                 else { if(APIresponse.message == "Token balance over; you have used up all your requests for today" && NumToken < arrayToken.length - 1) {NumToken++; cid--;}
 
@@ -254,8 +395,9 @@ function AllScan() {
 </script>
 </head>
 <body>
-    <input type="number"   value="222"   id="mcc" placeholder="MCC" required>
-    <input type="number" list="MNCs" name="MNC" id="mnc" placeholder="MNC" required>
+        <div class="form-row" id="barrasuperiore" style="display: flex; justify-content: center; visibility: visible;">
+    <input type="number" style="width: 80px !important; " class="form-control" value="222"   id="mcc" placeholder="MCC" required>
+    <input type="number" style="width: 100px !important;" class="form-control" list="MNCs" name="MNC" id="mnc" placeholder="MNC" required>
     <datalist id="MNCs">
         <option value="10">VODAFONE</option>
         <option value="1">TIM</option>
@@ -263,21 +405,41 @@ function AllScan() {
         <option value="50">ILIAD</option>
         <option value="88">WINDTRE</option>
     </datalist>
-    <input type="number" id="enodeb" placeholder="eNb" required>
-    <input type="number" id="secid" placeholder="Sector" required>
+    <input type="number" style="width: 105px !important;" class="form-control" id="enodeb" placeholder="eNb" required>
+    <input type="number" style="width: 130px !important;" class="form-control" id="secid" placeholder="Sector" required>
    
-    <input type="text" id="token" placeholder="Token" required>
-	<input type="text" id="coordinatedestra" placeholder="LatLng Destra" required>
-        <input type="text" id="coordinatesinistra" placeholder="LatLng Sinistra" required>
-<select id="verificafake">
-        <option value="null" selected disabled>Verifica dei Fake</option>
+    <input type="text" style="max-width: 145px !important;" class="form-control" id="token" placeholder="Token" required>
+	<input type="text" style="width: 120px !important;" class="form-control" id="coordinatedestra" placeholder="LatLng Destra" required>
+        <input type="text" style="width: 130px !important;" class="form-control" id="coordinatesinistra" placeholder="LatLng Sinistra" required>
+<select style="max-width: 135px !important;" class="form-control" id="verificafake">
+        <option value="null" selected disabled>Verifica Fake</option>
    <option value="Si">SI</option>
        <option value="No">NO</option>
       </select>
-    <button onclick="AllScan()">Go</button>
-
+    <button style="margin-top: 5px !important; margin-left: 5px; margin-right: 0px !important;" class="pure-material-button-contained" onclick="AllScan()">Go</button>
+    </div>
+    <div style="float: right; margin-top: -10px;">
+    <button class="freccia" id="pulsantefreccia" onclick="collapseBarra()" style="z-index: -1; font-size: 20px; background-color: #ffffff; border: 0px; margin-bottom: 5px;">▲</button>
+    </div>
+    </div>
     <div id="result"></div>
-    <div id="map"></div>
+    <div id="map" style="height=85%;"></div>
+            <script>
+    var content = document.getElementById("barrasuperiore");
+            var tastofreccia = document.getElementById("pulsantefreccia");
+            var mappa = document.getElementById("map");
+        function collapseBarra() {
+    if (content.style.display === "flex") {
+        content.style.display = "none";
+        tastofreccia.innerHTML = '▼';
+        mappa.style.height = "79.2%";
+    } else {
+      content.style.display = "flex";
+        tastofreccia.innerHTML = '▲';
+        mappa.style.height = "43%";
+    }
+        }
+</script>
     <script>
         let btn = document.createElement('button');
 btn.innerText = 'Delete Marker';
