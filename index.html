@@ -460,11 +460,7 @@ btn.onclick =  function() {
 var key = "9f2c971b2cd69c";
 L.mapbox.accessToken = 'pk.eyJ1IjoiYmFuY29tYWx0ZSIsImEiOiJja3Fub3I1dDUwYmg3MnVueHVzcmhqdDBkIn0.HEt44zGrExgF_tODahgsHg';
     
-var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
-       attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-       tileSize: 512,
-       zoomOffset: -1
-});
+
 // Add layers that we need to the map
 var streets = L.tileLayer.Unwired({key: key, scheme: "streets"});
 	    var osm = L.tileLayer(
@@ -476,7 +472,11 @@ var streets = L.tileLayer.Unwired({key: key, scheme: "streets"});
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 });
 
-
+var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
+       attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+       tileSize: 512,
+       zoomOffset: -1
+});
 // Initialize the map
 
 var map = L.map('map', {
