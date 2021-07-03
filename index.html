@@ -169,10 +169,6 @@ outline: none !important;
 <script src="https://maps.locationiq.com/v2/libs/leaflet-geocoder/1.9.5/leaflet-geocoder-locationiq.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-plugins/3.0.2/control/Permalink.js"></script>
-	
-<script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
-
      
  <!-- Global site tag (gtag.js) - Google Analytics -->
     </script>
@@ -458,8 +454,6 @@ btn.onclick =  function() {
 
                     // API token goes here
 var key = "9f2c971b2cd69c";
-L.mapbox.accessToken = 'pk.eyJ1IjoiYmFuY29tYWx0ZSIsImEiOiJja3Fub3I1dDUwYmg3MnVueHVzcmhqdDBkIn0.HEt44zGrExgF_tODahgsHg';
-    
 
 // Add layers that we need to the map
 var streets = L.tileLayer.Unwired({key: key, scheme: "streets"});
@@ -472,11 +466,7 @@ var streets = L.tileLayer.Unwired({key: key, scheme: "streets"});
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 });
 
-var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
-       attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-       tileSize: 512,
-       zoomOffset: -1
-});
+
 // Initialize the map
 
 var map = L.map('map', {
@@ -487,7 +477,6 @@ var map = L.map('map', {
 // Add the 'layers' control
 L.control.layers({
         "Streets": streets,
-	"Mapbox Tiles": mapboxTiles,
         "OSM": osm,
 	"SAT": satellite,
     }, null, {
