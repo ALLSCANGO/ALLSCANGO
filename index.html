@@ -4,14 +4,15 @@
         <title>AllScan GO</title>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
-            body {font-family: 'PT Sans', sans-serif !important; max-width: 1100px !important; align-content: center;   margin: auto !important; }
+                        html,body { height:100%; }
+            body {font-family: 'PT Sans', sans-serif !important; align-content: center;   margin: auto !important; }
             .form-control {max-width: 130px; margin: 5px; margin-bottom: 10px !important;}
             @media (min-width: 900px) {
                 .logotext {margin-right: 30px !important; font-size: 20px; margin-top: -2px !important;}
                 .form-row {margin-left: -10px !important; margin-right: -10px !important;}
                 li.nav-item{margin-top: -2px;}
                 #pulsantefreccia {display: none;}
-                #map {width: 100%; height: 85%; border-radius: 10px;}
+                #map {width: 100%; height: calc(100vh - 110px);}
                 #testotitolo {padding-left: 8px; padding-top: 15px;}
 
             }
@@ -21,7 +22,7 @@
                 .logotext {text-align: center; font-size: 20px; padding-left: 5px;}
                 .navbar-brand {padding-left: 9px !important;}
                 #titolo {box-shadow: 0 3px 10px -5px gray; margin-left: 0px; margin-right: 0px;}
-                 #map {width: 100%; height: 43%; margin-bottom: 0px;}
+                 #map {width: 100%; height: calc(100vh - 364px); margin-bottom: 0px;}
               #testotitolo {padding-left: 30px; padding-right: 30px; padding-bottom: 15px; padding-top: 15px;}
                 .form-row {margin-top: 30px;}
             }
@@ -141,11 +142,11 @@ outline: none !important;
 }
 </style>
         
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <div id="titolo" style="z-index: 10">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+        <div id="titolo" style="z-index: 10; max-width: 1100px !important; margin: auto">
       <font color="#333"><p id="testotitolo">Benvenuto su AllScan GO, la versione più leggera di AllScan</p></font>
             </div>
-<div style="padding-left: 15px; padding-right: 15px;">
+<div>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
@@ -395,6 +396,8 @@ function AllScan() {
 </script>
 </head>
 <body>
+
+    <div id="contentbeforemap" style="max-width: 1100px !important; margin: auto">
         <div class="form-row" id="barrasuperiore" style="display: flex; justify-content: center; visibility: visible;">
     <input type="number" style="width: 80px !important; " class="form-control" value="222"   id="mcc" placeholder="MCC" required>
     <input type="number" style="width: 100px !important;" class="form-control" list="MNCs" name="MNC" id="mnc" placeholder="MNC" required>
@@ -422,8 +425,9 @@ function AllScan() {
     <button class="freccia" id="pulsantefreccia" onclick="collapseBarra()" style="z-index: -1; font-size: 20px; background-color: #ffffff; border: 0px; margin-bottom: 5px;">▲</button>
     </div>
     </div>
+        
     <div id="result"></div>
-    <div id="map" style="height=85%;"></div>
+    <div id="map"></div>
             <script>
     var content = document.getElementById("barrasuperiore");
             var tastofreccia = document.getElementById("pulsantefreccia");
@@ -432,11 +436,11 @@ function AllScan() {
     if (content.style.display === "flex") {
         content.style.display = "none";
         tastofreccia.innerHTML = '▼';
-        mappa.style.height = "79.2%";
+        mappa.style.height = "calc(100vh - 122px)";
     } else {
       content.style.display = "flex";
         tastofreccia.innerHTML = '▲';
-        mappa.style.height = "43%";
+        mappa.style.height = "calc(100vh - 364px)";
     }
         }
 </script>
@@ -468,7 +472,7 @@ var streets = L.tileLayer.Unwired({key: key, scheme: "streets"});
 var map = L.map('map', {
         center: [ 42.6197784,11.5083833 ], //map loads with this location as center
         zoom: 6,
-        layers: [streets] // Show 'streets' by default
+        layers: [osm] // Show 'streets' by default
 });
 // Add the 'layers' control
 L.control.layers({
